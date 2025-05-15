@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mudar-tema{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 10px;
+}
+.bv{
+    margin: 10px;
+    font-size: 30px;
+}
+nav li {
+    display: flex;
+    align-items: center;
+}
+nav li a p{
+    font-size: 20px;
+    padding: 8px;
+    transition: all 1s;
+}
+nav li a p:hover{
+    background-color: var(--color-background);
+}
+nav, nav ul{
+    width: 100%;
+    background-image: linear-gradient(to bottom, var(--color-text-contrast) ,rgba(0, 0, 0, 0) );
+}
