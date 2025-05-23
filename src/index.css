@@ -31,3 +31,27 @@ nav, nav ul{
     width: 100%;
     background-image: linear-gradient(to bottom, var(--color-text-contrast) ,rgba(0, 0, 0, 0) );
 }
+.calculadora{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 40px;
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(156, 156, 156);
+}
+
+.tela{
+    width: 90%;
+    height: 50px;
+    background-color: white;
+}
+
+.calculadora .botao{
+    margin: 10px;
+    color: black;
+    width: 50px;
+    height: 50px;
+}
