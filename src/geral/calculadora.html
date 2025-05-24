@@ -9,6 +9,7 @@
     <title>EU</title>
 </head>
 <body class="tema tema--escuro" id="body">
+    <!-- menu -->
     <nav class="">
         <ul class="flex">
             <li ><a href="../../index.html"><p class="-color bv">Bem Vindo(a)!</p></a></li>
@@ -17,10 +18,18 @@
             <li ><button onclick="mudarTema()" id="tema" class="mudar-tema bg-text"></button></li>
         </ul>
     </nav>
-    <div class="calculadora">
-        <input type="text" id="tela">
+    <!-- Botão para trocar de calculadora -->
+    <!-- <div class="escolha">
+        <button onclick="trocarCalc()"><p>Padrão/Cientifica</p></button> 
+    </div> -->
+    <!-- Calculadora Padrão -->
+    <div class="calculadora-normal" id="calculadora-normal">
+        <div class="tela">
+            <input type="text" id="tela">
+            <button class="botao" data-key="c">C</button>
+        </div>
         <div class="numeros">
-            <button class="botao" data-key="7"  >7</button>
+            <button class="botao" data-key="7" >7</button>
             <button class="botao" data-key="8" >8</button>
             <button class="botao" data-key="9" >9</button>
             <button class="botao" data-key="/" >/</button><br>
@@ -38,6 +47,10 @@
             <button class="botao" data-key="+" >+</button>
         </div>
     </div>
+    <!-- Calculadora Cientifica -->
+    <!-- <div class="calculadora-cientifica hide" id="calculadora-cientif">
+        <input type="text" id="tela"> 
+    </div> -->
     <script src="../index.js"></script>
 </body>
 </html>
