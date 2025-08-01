@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@unocss/reset@66.1.1/tailwind-compat.css">
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../padroes.css">
+    <title>Personagens Guardados</title>
+</head>
+<body class="tema tema--escuro" id="body">
+    <!-- menu -->
+    <nav class="">
+        <ul class="flex">
+            <li ><a href="../../../index.html"><p class="-color bv">Home</p></a></li>
+            <li><a href="#"><p class="link">Meus Personagens</p></a></li>
+            <li class="flex-1"></li>
+            <li ><button onclick="mudarTema()" id="tema" class="mudar-tema bg-text"></button></li>
+        </ul>
+    </nav>
+    <div class="conteudo">
+    <div class="personagens" id="personagem">
+        <div class="text" id="output"></div>
+    </div>
+    </div>
+    <footer class="rodape">
+    <ul class="lista">
+        <li class="li"><a href="https://github.com/Fkaique"><strong class="color-secondary">GitHub</strong> : Fkaique</a></li>
+        <li class="li"><a href="https://mysteriescradle.itch.io/"><strong class="color-secondary">Itch.io</strong> : MysteriesCradle</a></li>
+        <li class="li"><a href="https://gx.games/pt-br/studios/b861e49e-f878-4cf1-8b3c-5c48eb75418e/"><strong class="color-secondary">GxGames</strong> : MysteriesCradle</a></li>
+    </ul>
+    </footer>
+
+    <script src="../../index.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>

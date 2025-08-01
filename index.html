@@ -6,18 +6,52 @@
     <link rel="stylesheet" href="https://unpkg.com/@unocss/reset@66.1.1/tailwind-compat.css">
     <link rel="stylesheet" href="src/index.css">
     <link rel="stylesheet" href="src/padroes.css">
-    <title>EU</title>
+    <title>Fkaique</title>
 </head>
 <body class="tema tema--escuro" id="body">
     <nav class="">
         <ul class="flex">
-            <li ><a href=""><p class="-color bv">Bem Vindo(a)!</p></a></li>
-            <li><a href="src/geral/calculadora.html"><p class="link">Calculadora</p></a></li>
+            <li ><a href=""><p class="-color bv">Home</p></a></li>
+            <li><a href="./src/geral/gerador de personagens/gerador.html"><p class="link">Meus Personagens</p></a></li>
             <li class="flex-1"></li>
             <li ><button onclick="mudarTema()" id="tema" class="mudar-tema bg-text"></button></li>
         </ul>
     </nav>
-    
+    <div class="conteudo">
+        <div class="perfil">
+            <img src="./src/images/perfil.png" alt="">
+        </div>
+        <div class="descricao">
+            <pre>
+    <strong class="color-secondary">EU</strong> = {
+        <strong class="color-primary">Nome</strong>: "Francisco Kaique",
+        <strong class="color-primary">Idade</strong>: 20,
+        <strong class="color-primary">Cidade</strong>: "Aracati - CE",
+        <strong class="color-primary">Formação</strong>: [TI, Cursando BCC],
+        <strong class="color-primary">Projetos</strong>: MyProjects()
+    }
+    <strong class="color-secondary">MyProjects</strong> = {
+        <strong class="color-primary">PantsLife</strong>: {
+            <strong class="color-error">Envolvidos</strong>: <a href="https://github.com/Fkaique">Fkaique</a>,
+            <strong class="color-error">Link1</strong>: <a href="https://mysteriescradle.itch.io/life-in-pants">itch.io</a>,
+            <strong class="color-error">Link2</strong>: <a href="https://gx.games/pt-br/games/vpdabd/pants-life/">GxGames</a>,
+            <strong class="color-error">Link3</strong>: <a href="https://github.com/Fkaique/Life-in-Pants">GitHub</a>
+        },
+        <strong class="color-primary">Calculadora</strong>: {
+            <strong class="color-error">Envolvidos</strong>: <a href="https://github.com/Fkaique">Fkaique</a>,
+            <strong class="color-error">Link1</strong>: <a href="./src/geral/calculadora.html">Calculadora</a>
+        }
+    }
+            </pre> 
+        </div>
+    </div>
+    <footer class="rodape">
+    <ul class="lista">
+        <li class="li"><a href="https://github.com/Fkaique"><strong class="color-secondary">GitHub</strong> : Fkaique</a></li>
+        <li class="li"><a href="https://mysteriescradle.itch.io/"><strong class="color-secondary">Itch.io</strong> : MysteriesCradle</a></li>
+        <li class="li"><a href="https://gx.games/pt-br/studios/b861e49e-f878-4cf1-8b3c-5c48eb75418e/"><strong class="color-secondary">GxGames</strong> : MysteriesCradle</a></li>
+    </ul>
+    </footer>
     <script src="src/index.js"></script>
 </body>
 </html>

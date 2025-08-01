@@ -1,0 +1,21 @@
+.text {
+  display: flex;
+  gap: 10px; /* espaçamento entre os containers */
+  flex-wrap: wrap; /* para quebrar linha se não couber */
+  justify-content: center;
+}
+
+.personagens .container{
+    padding: 100px ;
+    border: 1px solid black;
+    max-width: 370px;
+    background-color: rgba(82, 91, 96, 0.1);
+    
+}
+.personagens.text { 
+    align-self: flex-start;
+}
+.personagens img{
+    width: 200px;
+    margin-bottom: 20px;
+}

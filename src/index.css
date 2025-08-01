@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 .mudar-tema{
     display: flex;
     width: 30px;
@@ -39,7 +45,13 @@ nav, nav ul{
     
 }
 
+.lista{
+    list-style-type: disc;
+    padding-left: 20px; /* para espaço entre o ponto e o texto */
+}
 
+
+    
 .calculadora-normal{
     display: flex;
     flex-direction: column;
@@ -66,4 +78,28 @@ nav, nav ul{
 /* tirar itens */
 .hide{
     display: none;
+}
+
+.descricao{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.conteudo{
+    flex: 1;
+}
+.perfil{
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+}
+.perfil img{
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+.rodape{
+    padding: 80px;
+    background-image: linear-gradient(to top, var(--color-text-contrast) ,rgba(0, 0, 0, 0) );
 }
