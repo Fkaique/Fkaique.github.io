@@ -36,9 +36,13 @@ function criarPersonagem(p) {
     return personagem
 }
 
-function mostrarImagem(){
-    
+function mostrarMais(event) {
+    const seta = event.currentTarget.querySelector('.seta-svg');
+    const container = event.currentTarget.closest('.container');
+    container.classList.toggle('ativo');
+    seta.classList.toggle('ativo');
 }
+
 
 function mostrarPersonagens() {
     const output = document.getElementById("output");
@@ -47,16 +51,23 @@ function mostrarPersonagens() {
     for (let i of personagens) {
         output.innerHTML += `
             <div class="container">
-                <img src="${i.image}">
+                <img onclick="this.classList.toggle('ativo')" src="${i.image}">
                 <strong>Nome:</strong> ${i.nome}<br>
                 <strong>Raça:</strong> ${i.raca}<br>
                 <strong>Classe:</strong> ${i.classe}<br>
-                <strong>Habilidade:</strong> ${i.habilidade}
-                <strong>Vestes:</strong> ${i.vestes}
+                <strong>Habilidade:</strong> ${i.habilidade}<br>
+                <strong>Vestes:</strong> ${i.vestes}<br >
                 <strong>Atributos:</strong> <pre>${JSON.stringify(i.atributos, null, 2)}</pre>
                 <strong>Perícias:</strong> <pre>${JSON.stringify(i.pericias, null, 2)}</pre>
                 <strong>Status:</strong> <pre>${JSON.stringify(i.status, null, 2)}</pre>
                 <strong>Descrição:</strong> ${i.descricao}
+                <div class="container-depth">
+                    <div onclick="mostrarMais(event)" class=" seta" title="clique para ver mais">
+                        <svg class="seta-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
         `;
     }
@@ -69,10 +80,10 @@ const classe = {
 }
 
 const Magico = criarPersonagem({
-    nome: "magico",
+    nome: "MAGICO",
     classe: "Feitiçeiro",
     habilidade: "Fusão",
-    raca: "humano",
+    raca: "Humano",
     vestes: "Uniforme de Cozinha",
     atributos: {
         forca: '?',
