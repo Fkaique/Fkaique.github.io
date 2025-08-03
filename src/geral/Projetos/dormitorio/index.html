@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@unocss/reset@66.1.1/tailwind-compat.css">   
+    <link rel="stylesheet" href="../../../index.css">
+    <link rel="stylesheet" href="../../../padroes.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Dormitorio</title>
+</head>
+<body class="tema tema--escuro" id="body">
+    <nav class="">
+        <ul class="flex">
+            <li ><a href="../../../../index.html"><p class="-color bv">Home</p></a></li>
+            <li><a href="../../gerador de personagens/gerador.html"><p class="link">Galeria</p></a></li>
+            <li><a href="#"><p class="link">Dormitório</p></a></li>
+            <li class="flex-1"></li>
+            <li ><button onclick="mudarTema()" id="tema" class="mudar-tema bg-text"></button></li>
+        </ul>
+    </nav>
+    <div class="bg"></div>
+    <div class="contar">
+        <button class="color-primary bg-background botao" id="contar">Contar Carneirinhos</button>
+    </div>
+    <div class="contar">
+        <p class="carneirinhos"></p>
+    </div>
+    <div class="contar">
+        <label class="audio" for="audioInput"><input type="file" id="audioInput">Toque uma Música</label>
+        <audio id="player" loop></audio>
+    </div>
+
+    <script src="../../../index.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>

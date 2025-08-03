@@ -43,6 +43,18 @@ function mostrarMais(event) {
     seta.classList.toggle('ativo');
 }
 
+function zoomImage() {
+    const img = event.target;
+    const modal = document.getElementById('zoomModal');
+    const zoomedImage = document.getElementById('zoomedImage');
+
+    zoomedImage.src = img.src;
+    modal.style.display = 'flex';
+}
+
+function closeZoom() {
+    document.getElementById('zoomModal').style.display = 'none';
+}
 
 function mostrarPersonagens() {
     const output = document.getElementById("output");
@@ -51,7 +63,7 @@ function mostrarPersonagens() {
     for (let i of personagens) {
         output.innerHTML += `
             <div class="container">
-                <img onclick="this.classList.toggle('ativo')" src="${i.image}">
+                <img onclick="zoomImage()" src="${i.image}">
                 <strong>Nome:</strong> ${i.nome}<br>
                 <strong>Raça:</strong> ${i.raca}<br>
                 <strong>Classe:</strong> ${i.classe}<br>

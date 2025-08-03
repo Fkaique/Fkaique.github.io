@@ -15,6 +15,7 @@
         <ul class="flex">
             <li ><a href="../../../index.html"><p class="-color bv">Home</p></a></li>
             <li><a href="#"><p class="link">Galeria</p></a></li>
+            <li><a href="../Projetos/dormitorio/index.html"><p class="link">Dormitório</p></a></li>
             <li class="flex-1"></li>
             <li ><button onclick="mudarTema()" id="tema" class="mudar-tema bg-text"></button></li>
         </ul>
@@ -22,6 +23,9 @@
     <div class="conteudo">
     <div class="personagens" id="personagem">
         <div class="text" id="output"></div>
+        <div id="zoomModal" onclick="closeZoom()">
+            <img id="zoomedImage" src="">
+        </div>
     </div>
     </div>
     <footer class="rodape">

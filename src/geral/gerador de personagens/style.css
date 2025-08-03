@@ -61,3 +61,23 @@
 .seta-svg.ativo {
   transform: rotate(180deg);
 }
+#zoomModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+#zoomModal img {
+    width: 500px;
+    height: 500px;
+    max-width: 50vw;
+    max-height: 50vw;
+    box-shadow: 0 0 20px #fff;
+}
