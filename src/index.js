@@ -1,8 +1,7 @@
 
 // Muda a classe do body para alterar o tema
-function mudarTema(antigo, novo) {
+function mudarTema() {
   const body = document.getElementById("body");
-  const button = document.getElementById("tema");
   if (body.classList.contains("tema--claro")) {
     body.classList.add("tema--escuro")
     body.classList.remove("tema--claro")
