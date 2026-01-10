@@ -1,3 +1,13 @@
+let proj = document.getElementById("projects")
+
+proj.addEventListener('click',()=>{
+  if (proj.classList.contains('proj-activate')){
+    console.log("neh")
+    proj.className = 'projects'
+  }else{
+    proj.className = 'proj-activate'
+  }
+})
 
 // Muda a classe do body para alterar o tema
 function mudarTema() {
@@ -11,22 +21,9 @@ function mudarTema() {
   }
 }
 
-// function trocarCalc() {
-//   const calcn = document.getElementById("calculadora-normal");
-//   const calcc = document.getElementById("calculadora-cientif");
-//   const button = document.getElementById("tema");
-//   if (calcn.classList.contains("hide")) {
-//     calcn.classList.remove("hide")
-//     calcc.classList.add("hide")
-//   } else {
-//     calcn.classList.add("hide")
-//     calcc.classList.remove("hide")
-//   }
-// }
-
 //calculadora normal
 {
-
+  
   let a;
   let oper = ''
   // detecta o click nos botões da class numero 
@@ -44,24 +41,24 @@ function mudarTema() {
           a /= Number(tela.value)
           tela.value = a;
           break;
-        case '*':
-          a *= Number(tela.value)
-          tela.value = a;
-          break;
-        case '-':
-          a -= Number(tela.value)
-          tela.value = a;
-          break;
-        case '+':
-          a += Number(tela.value)
-          tela.value = a;
-          break;
-      }
-    } else if (!isFinite(value)) {
-      if (value === '-' && tela.value === "") {
-        tela.value += '-'
-      } else if (value !== '.') {
-        a = Number(tela.value);
+          case '*':
+            a *= Number(tela.value)
+            tela.value = a;
+            break;
+            case '-':
+              a -= Number(tela.value)
+              tela.value = a;
+              break;
+              case '+':
+                a += Number(tela.value)
+                tela.value = a;
+                break;
+              }
+            } else if (!isFinite(value)) {
+              if (value === '-' && tela.value === "") {
+                tela.value += '-'
+              } else if (value !== '.') {
+                a = Number(tela.value);
         tela.value = null
       } else if (tela.value !== "") {
         tela.value += value
@@ -83,11 +80,6 @@ function mudarTema() {
     }
     console.log(event.target.dataset.key)
   })
-
+  
 }
 
-//calculadora cientifica
-{
-
-
-}
