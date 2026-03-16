@@ -32,16 +32,11 @@
     --color-azul-2: hsl(from var(--color-azul-base) h s calc(l*0.4));
     --color-azul-3: hsl(from var(--color-azul-base) h s calc(l*1.2));
     --color-azul-4: hsl(from var(--color-azul-base) h s calc(l*1.4));
-
-    --font-heading: 'IM Fell English', serif;
-    --font-serif: 'Merriweather', serif;
-    --font-sans-serif: 'DM Sans', sans-serif;
-    --font-mono: 'Fira Code', monospace;
 }
 .tema--claro{
     --color-text: var(--color-cinza-1);
-    --color-text-contrast: var(--color-branco);
-    --color-background: var(--color-cinza-4);
+    --color-text-contrast: var(--color-cinza-4);
+    --color-background: var(--color-branco);
     --color-background-contrast: var(--color-branco);
     --color-error: var(--color-vermelho-4);
     --color-error-contrast: var(--color-branco);
@@ -87,7 +82,6 @@
 .tema{
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: var(--font-sans-serif);
 }
 .surface-vermelho{
     background-color: var(--color-surface-vermelho);
