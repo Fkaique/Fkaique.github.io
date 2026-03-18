@@ -4,6 +4,7 @@ interface Props {
         text?: string
         color?: string
     }
+    icon?: string
     image?: string
     items?: {
         text?: string
@@ -22,20 +23,23 @@ const props = withDefaults(defineProps<Props>(), {
 })
 </script>
 <template>
-    <div class="card" :class="[props.halign, { 'bg-text': !props.bgColor }]"
-        :style="props.bgColor ? { backgroundColor: props.bgColor } : { boxShadow: props.boxShadow }">
-        <h2 v-if="props.title?.text" :style="{ color: props.title.color ?? 'var(--color-text-contrast)' }">
-            {{ props.title?.text }}
-            <hr />
+    <div class="card" :class="[props.halign, { 'bg-text': !props.bgColor }]" :style="{
+        backgroundColor: props.bgColor,
+        boxShadow: props.boxShadow
+    }">
+        <h2 class="headCard" v-if="props.title?.text" :style="{ color: props.title.color ?? 'var(--color-text-contrast)' }">
+            <span class="card-title" :style="{color: props.title.color ?? 'var(--color-secondary)'}" v-html="props.title?.text"></span>
+            <img class="iconImg" :src="props.icon" alt="icone">
         </h2>
+        <hr v-if="props.title?.text" />
         <img class="cardImage" v-if="props.image" :src="props.image" :alt="props.title?.text"><br>
-        <ul>
+        <ul v-if="props.items.length">
             <li v-for="(item, index) in props.items" :key="index"
-                :style="{ textAlign: item.halign ?? props.halign, color: item.color ?? 'var(--color-text-contrast)' }">
+                :style="{ textAlign: item.halign ?? props.halign }">
                 <span v-html="item.text"></span>
             </li>
         </ul>
-        <slot> </slot>
+        <slot />
     </div>
 </template>
 <style>
@@ -43,10 +47,28 @@ const props = withDefaults(defineProps<Props>(), {
     justify-content: start;
 }
 
+.headCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headCard img {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+}
+
 hr {
     width: 80%;
     border-radius: 50%;
-    
+    border-color: var(--color-text-contrast);
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.card-title {
+    /* text-shadow: 1px 1px 1px var(--color-text-contrast); */
 }
 
 .center {

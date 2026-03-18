@@ -58,7 +58,7 @@
     --color-surface-vermelho: var(--color-vermelho-4);
     --color-primary: var(--color-roxo-base);
     --color-primary-contrast: var(--color-branco);
-    --color-secondary: var(--color-amarelo-base);
+    --color-secondary: var(--color-amarelo-2);
     --color-secondary-contrast: var(--color-branco);
 }
 .tema--escuro{
