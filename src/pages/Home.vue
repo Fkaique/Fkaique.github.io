@@ -8,16 +8,16 @@ import bagIcon from '@/assets/bagIcon.png'
 import clockIcon from '@/assets/clockIcon.png'
 import { computed, ref } from 'vue';
 
-interface Items {
-    text?: string,
-    haling?: 'center' | 'start' | 'end',
-    color?: string | 'black' | 'white' | 'var(--color-text-contrast)' | 'var(--color-text)'
-}
+// interface Items {
+//     text?: string,
+//     haling?: 'center' | 'start' | 'end',
+//     color?: string | 'black' | 'white' | 'var(--color-text-contrast)' | 'var(--color-text)'
+// }
 
-interface Title {
-    text?: string,
-    color?: string | 'black' | 'white' | 'var(--color-text-contrast)' | 'var(--color-text)'
-}
+// interface Title {
+//     text?: string,
+//     color?: string | 'black' | 'white' | 'var(--color-text-contrast)' | 'var(--color-text)'
+// }
 
 interface Project {
     id: string
