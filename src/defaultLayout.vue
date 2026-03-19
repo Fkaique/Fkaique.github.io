@@ -34,6 +34,7 @@ function toggleTheme() {
     flex-direction: column;
     min-height: 100vh;
     background-image: linear-gradient(to bottom, var(--color-black), var(--color-white));
+    transition: all .3s;
 }
 
 .content {

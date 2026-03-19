@@ -1,3 +1,4 @@
+import '@unocss/reset/tailwind-v4.css'
 import { createApp } from 'vue'
 import './padroes.css'
 import './style.css'

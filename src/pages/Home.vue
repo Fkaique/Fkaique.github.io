@@ -137,25 +137,24 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
 
 <template>
     <div class="card-home-apresentation">
-        <Card :image="perfil" bg-color="var(--color-background)" halign="center">
-            <div class="apresentation">
-                <pre class="FKLanguage">
-    <strong class="color-secondary">Eu</strong> = {
-        <strong class="color-primary">Nome</strong>: "Francisco Kaique",
-        <strong class="color-primary">Idade</strong>: {{ idade }},
-        <strong class="color-primary">Cidade</strong>: "Aracati - CE",
-        <strong class="color-primary">Formação</strong>: [TI, Cursando BCC]
-    }
-            </pre>
-                <pre class="FKLanguage">
-    <strong class="color-secondary">Habilidades</strong> = [
-        "HTML", "CSS", "TypeScript",
-        "Vue", "ReactJs"
-        "GML", "GDScript", "C#"
-    ]
-            </pre>
-            </div>
-        </Card>
+        <Card :image="perfil" bg-color="var(--color-background)" halign="center"></Card>
+        <div class="apresentation">
+            <pre class="FKLanguage">
+<strong class="color-secondary">Eu</strong> = {
+    <strong class="color-primary">Nome</strong>: <span>"Francisco Kaique",</span>
+    <strong class="color-primary">Idade</strong>: <span>{{ idade }},</span>
+    <strong class="color-primary">Cidade</strong>: "<address>Aracati - CE</address>",
+    <strong class="color-primary">Formação</strong>: <span>"[TI, Cursando BCC]"</span>
+}
+        </pre>
+            <pre class="FKLanguage">
+<strong class="color-secondary">Habilidades</strong> = [
+    "HTML", "CSS", "TypeScript",
+    "Vue", "ReactJs"
+    "GML", "GDScript", "C#"
+]
+        </pre>
+        </div>
     </div>
     <div class="container">
         <div class="titleProjects">
@@ -176,14 +175,15 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
                         <strong class="color-primary">Envolvidos</strong> :
                         <span class="color-text">
                             <span v-for="(user, i) in project.envolvidos" :key="i">
-                                <a :href="`https://github.com/${user.github}`" target="_blank" rel="noopener noreferrer">
+                                <a :href="`https://github.com/${user.github}`" target="_blank"
+                                    rel="noopener noreferrer">
                                     {{ user.name }}
                                 </a>
                                 <span v-if="i < project.envolvidos.length - 1">, </span>
                             </span>
                         </span>
                     </div>
-    
+
                     <div class="topicCard">
                         <strong class="color-primary">Descrição</strong> :
                         <span class="color-text">
@@ -211,8 +211,8 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
     font-family: var(--font-mono);
 }
 
-.topicCard {
-    font-size: 20px;
+pre >* {
+    display: inline;
 }
 
 .topicsCard {
@@ -230,25 +230,18 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
     gap: 20px;
 }
 
-@media (max-width: 900px) {
-    .apresentation {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
 .card-home-apresentation {
     margin: 0 auto;
     min-height: 200px;
-    min-width: 200px;
     max-width: 400px;
-    width: 30vw;
+    width: 40vw;
 }
 
 .card-project {
     max-width: 400px;
-    min-height: 320px;
+    min-height: 200px;
     padding: 30px;
+    margin: 0 auto;
 }
 
 .linksCard {
@@ -262,6 +255,7 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
     color: var(--color-text-contrast);
     padding: 10px;
     margin: 10px;
+    width: 100%;
 }
 
 
@@ -279,6 +273,10 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
     background-color: var(--color-text);
     border-radius: 10px;
     transition: all .2s;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container:hover {
@@ -290,21 +288,40 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
     height: 40px;
     border-radius: 10px;
     padding: 10px;
-    font-size: 17px;
-
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.435);
 }
 
 .pesquisa,
 .pesquisa:focus {
-    border: none;
     outline: none;
 }
 
 
 .card-home {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(60%, 280px), 1fr));
     gap: 20px;
-    width: 90vw;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .apresentation {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .titleProjects {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 </style>

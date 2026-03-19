@@ -23,14 +23,14 @@ const props = withDefaults(defineProps<Props>(), {
 })
 </script>
 <template>
-    <div class="card" :class="[props.halign, { 'bg-text': !props.bgColor }]" :style="{
+    <article class="card" :class="[props.halign, { 'bg-text': !props.bgColor }]" :style="{
         backgroundColor: props.bgColor,
         boxShadow: props.boxShadow
     }">
-        <h2 class="headCard" v-if="props.title?.text" :style="{ color: props.title.color ?? 'var(--color-text-contrast)' }">
+        <h1 class="headCard" v-if="props.title?.text" :style="{ color: props.title.color ?? 'var(--color-text-contrast)' }">
             <span class="card-title" :style="{color: props.title.color ?? 'var(--color-secondary)'}" v-html="props.title?.text"></span>
             <img class="iconImg" :src="props.icon" alt="icone">
-        </h2>
+        </h1>
         <hr v-if="props.title?.text" />
         <img class="cardImage" v-if="props.image" :src="props.image" :alt="props.title?.text"><br>
         <ul v-if="props.items.length">
@@ -40,11 +40,25 @@ const props = withDefaults(defineProps<Props>(), {
             </li>
         </ul>
         <slot />
-    </div>
+    </article>
 </template>
 <style>
 .start {
     justify-content: start;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.end {
+    justify-content: end;
+}
+
+.card-title {
+    font-size: 1.5rem;
 }
 
 .headCard {
@@ -56,7 +70,6 @@ const props = withDefaults(defineProps<Props>(), {
 .headCard img {
     width: 30px;
     height: 30px;
-    font-size: 10px;
 }
 
 hr {
@@ -65,19 +78,6 @@ hr {
     border-color: var(--color-text-contrast);
     margin: 0 auto;
     margin-top: 20px;
-}
-
-.card-title {
-    /* text-shadow: 1px 1px 1px var(--color-text-contrast); */
-}
-
-.center {
-    justify-content: center;
-    text-align: center;
-}
-
-.end {
-    justify-content: end;
 }
 
 .card {
@@ -92,11 +92,14 @@ hr {
 
 .card li {
     list-style: none;
-    font-size: 20px;
+    
 }
 
 .cardImage {
     border-radius: 50%;
     margin: 10px;
+    min-width: 50px;
+    width: 30vw;
+    max-width: 300px;
 }
 </style>
