@@ -32,8 +32,9 @@ onUnmounted(() => {
     <div class="header-wrapper">
         <nav class="navbar">
             <div class="linkMain">
-                <router-link class="link" to="/">Galeria</router-link>
-                <router-link class="link" to="/">Dormitório</router-link>
+                <!-- <router-link class="link" to="/galeria">Galeria</router-link> -->
+                 <a class="link" href="https://myscradle.github.io/galeria/">Galeria</a>
+                <router-link class="link" to="/domitorio">Dormitório</router-link>
             </div>
 
             <div class="col-2">
@@ -48,14 +49,13 @@ onUnmounted(() => {
 
         <div v-if="isVisible" class="menu-burguer" @click.stop>
             <div class="mudar-tema-sus" @click="mudarTema">Mudar Tema</div>
-            <router-link class="link-sus" to="/">Dormitório</router-link>
-            <router-link class="link-sus" to="/">Galeria</router-link>
+            <router-link class="link-sus" to="/domitorio">Dormitório</router-link>
+                 <a class="link-sus" href="https://myscradle.github.io/galeria/">Galeria</a>
+            <!-- <router-link class="link-sus" to="/galeria">Galeria</router-link> -->
         </div>
     </div>
 </template>
 <style>
-
-
 .mudar-tema,
 .mudar-tema-hamburguer {
     width: 50px;
