@@ -6,7 +6,6 @@ import discoBg from '@/assets/disco.png'
 const contar = ref(0)
 const dormiu = ref(false)
 
-const audioInput = ref<HTMLInputElement | null>(null)
 const player = ref<HTMLAudioElement | null>(null)
 
 let inicio = Date.now()
@@ -129,6 +128,14 @@ onUnmounted(() => {
     font-size: clamp(4%, 2vh, 20px);
     border: 1px solid;
     border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s;
+    background-color: rgba(137, 43, 226, 0.139);
+}
+
+.contar .botao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0px 10px rgba(255, 255, 255, 0.1);
 }
 
 .contar .carneirinhos {
