@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Props {
+const props = withDefaults(defineProps<{
     title?: {
         text?: string
         color?: string
@@ -14,9 +14,8 @@ interface Props {
     halign?: 'center' | 'start' | 'end'
     bgColor?: string
     boxShadow?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+    alt?: string
+}>(), {
     items: () => [],
     halign: 'start',
     boxShadow: '0px 0px 0px black'
@@ -27,15 +26,16 @@ const props = withDefaults(defineProps<Props>(), {
         backgroundColor: props.bgColor,
         boxShadow: props.boxShadow
     }">
-        <h1 class="headCard" v-if="props.title?.text" :style="{ color: props.title.color ?? 'var(--color-text-contrast)' }">
-            <span class="card-title" :style="{color: props.title.color ?? 'var(--color-secondary)'}" v-html="props.title?.text"></span>
-            <img class="iconImg" :src="props.icon" alt="icone">
+        <h1 class="headCard" v-if="props.title?.text"
+            :style="{ color: props.title.color ?? 'var(--color-text-contrast)' }">
+            <span class="card-title" :style="{ color: props.title.color ?? 'var(--color-secondary)' }"
+                v-html="props.title?.text"></span>
+            <img class="iconImg" :src="props.icon" :alt="props.alt">
         </h1>
         <hr v-if="props.title?.text" />
-        <img class="cardImage" v-if="props.image" :src="props.image" :alt="props.title?.text"><br>
+        <img class="cardImage" v-if="props.image" :src="props.image" :alt="props.alt"><br>
         <ul v-if="props.items.length">
-            <li v-for="(item, index) in props.items" :key="index"
-                :style="{ textAlign: item.halign ?? props.halign }">
+            <li v-for="(item, index) in props.items" :key="index" :style="{ textAlign: item.halign ?? props.halign }">
                 <span v-html="item.text"></span>
             </li>
         </ul>
@@ -92,7 +92,7 @@ hr {
 
 .card li {
     list-style: none;
-    
+
 }
 
 .cardImage {

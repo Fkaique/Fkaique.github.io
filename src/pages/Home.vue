@@ -137,7 +137,7 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
 
 <template>
     <div class="card-home-apresentation">
-        <Card :image="perfil" bg-color="var(--color-background)" halign="center"></Card>
+        <Card :image="perfil" alt="Fkaique, engenheiro de software e desenvolvedor de jogos indie. Close-up de Fkaique com cabelo afro volumoso, fones de ouvido brancos no pescoço e camiseta azul, olhando confiantemente para a câmera. Imagem de identidade visual para portfólio técnico." bg-color="var(--color-background)" halign="center"></Card>
         <div class="apresentation">
             <pre class="FKLanguage">
 <strong class="color-secondary">Eu</strong> = {
