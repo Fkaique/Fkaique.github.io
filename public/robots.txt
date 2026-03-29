@@ -1,0 +1,5 @@
+# fkaique.tech Robots.txt
+# Focado em SEO para Engenharia de Software e Game Dev
+
+User-agent: *
+Allow: /
