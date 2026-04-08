@@ -6,18 +6,9 @@ import fkIcon from '@/assets/framekore.png'
 import drawIcon from '@/assets/drawIcon.png'
 import bagIcon from '@/assets/bagIcon.png'
 import clockIcon from '@/assets/clockIcon.png'
+import capiIcon from '@/assets/capi.png'
+import mcIcon from '@/assets/myscradle.png'
 import { computed, ref } from 'vue';
-
-// interface Items {
-//     text?: string,
-//     haling?: 'center' | 'start' | 'end',
-//     color?: string | 'black' | 'white' | 'var(--color-text-contrast)' | 'var(--color-text)'
-// }
-
-// interface Title {
-//     text?: string,
-//     color?: string | 'black' | 'white' | 'var(--color-text-contrast)' | 'var(--color-text)'
-// }
 
 interface Project {
     id: string
@@ -38,14 +29,12 @@ const projects: Project[] = [
         id: 'p-01',
         name: 'PantsLife',
         icon: pantsIcon,
-        description: `
-                Meu primeito jogo de Plataforma 2D feito em dois dias para uma GameJam.
-        `,
+        description: "Meu primeito jogo de Plataforma 2D feito em dois dias para uma GameJam.",
         envolvidos: [{ name: 'Fkaique', github: 'Fkaique' }],
         links: [
-            { id: 'l-01', link: 'https://mysteriescradle.itch.io/life-in-pants', title: '<strong>Link 1</strong>: itch.io', },
-            { id: 'l-02', link: 'https://gx.games/pt-br/games/vpdabd/pants-life/', title: '<strong>Link 2</strong>: GXGames', },
-            { id: 'l-03', link: 'https://gx.games/pt-br/games/vpdabd/pants-life/', title: '<strong>Link 3</strong>: Projeto Github', }
+            { id: 'l-01', link: 'https://mysteriescradle.itch.io/life-in-pants', title: '<strong>Link 1</strong>: itch.io' },
+            { id: 'l-02', link: 'https://gx.games/pt-br/games/vpdabd/pants-life/', title: '<strong>Link 2</strong>: GXGames' },
+            { id: 'l-03', link: 'https://github.com/Fkaique', title: '<strong>Link 3</strong>: Github' }
         ]
     },
     {
@@ -100,44 +89,80 @@ const projects: Project[] = [
             { id: 'l-02', link: 'https://github.com/Fkaique/ClockFK/', title: '<strong>Link 2</strong>: Github' }
         ],
     },
+    {
+        id: 'p-06',
+        icon: capiIcon,
+        name: 'Capi JS',
+        description: `plataforma web de educação socioambiental e consumo consciente.`,
+        envolvidos: [
+            { name: 'Grizzlyess', github: 'Grizzlyess' },
+            { name: 'Fkaique', github: 'Fkaique' },
+            { name: 'LevySena', github: 'LevySena' },
+            { name: 'Agliandro', github: 'Agliandro' },
+            { name: 'OViniSA', github: 'OViniSA' }
+        ],
+        links: [
+            { id: 'l-01', link: 'https://github.com/Grizzlyess/Capi_JS', title: '<strong>Link 1</strong>: Github' },
+            { id: 'l-02', link: 'https://Grizzlyess.github.io/Capi_JS', title: '<strong>Link 2</strong>: Capi' }
+        ],
+    },
+    {
+        id: 'p-07',
+        icon: mcIcon,
+        name: 'Mysteries Cradle',
+        description: `plataforma web de um studio de jogos indie e universos originais.`,
+        envolvidos: [
+            { name: 'Fkaique', github: 'Fkaique' },
+            { name: 'OViniSA', github: 'OViniSA' }
+        ],
+        links: [
+            { id: 'l-01', link: 'https://github.com/MysCradle', title: '<strong>Link 1</strong>: Github' },
+            { id: 'l-02', link: 'https://MysCradle.studio', title: '<strong>Link 2</strong>: Mysteries Cradle' }
+        ],
+    },
 ]
 
 const pesquisa = ref('')
 
 const projectsFiltered = computed(() => {
     const termo = pesquisa.value.trim().toLowerCase()
-
     if (!termo) return projects
 
     return projects.filter(project => {
         const nome = project.name.toLowerCase()
         const descricao = project.description.toLowerCase()
 
-        const envolvidos = project.envolvidos?.map(e => ({
-            name: e.name.toLowerCase(),
-            github: e.github.toLowerCase()
-        })) || []
+        const envolvidos = project.envolvidos.map(e =>
+            `${e.name} ${e.github}`.toLowerCase()
+        )
+
+        const links = project.links.map(l =>
+            `${l.title} ${l.link}`.toLowerCase()
+        )
 
         return (
             nome.includes(termo) ||
             descricao.includes(termo) ||
-            envolvidos.some(e =>
-                e.name.includes(termo) ||
-                e.github.includes(termo)
-            )
+            envolvidos.some(e => e.includes(termo)) ||
+            links.some(l => l.includes(termo))
         )
     })
 })
 
-const dateNow = new Date()
+// idade reativa sem mudar nada visual
 const dateNasc = new Date('2005-01-18')
-const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 * 60 * 24 * 365.25))
 
+const idade = computed(() => {
+    const now = new Date()
+    return Math.floor((now.getTime() - dateNasc.getTime()) / (1000 * 60 * 60 * 24 * 365.25))
+})
 </script>
 
 <template>
     <div class="card-home-apresentation">
-        <Card :image="perfil" alt="Fkaique, engenheiro de software e desenvolvedor de jogos indie. Close-up de Fkaique com cabelo afro volumoso, fones de ouvido brancos no pescoço e camiseta azul, olhando confiantemente para a câmera. Imagem de identidade visual para portfólio técnico." bg-color="var(--color-background)" halign="center"></Card>
+        <Card :image="perfil"
+            alt="Fkaique, engenheiro de software e desenvolvedor de jogos indie. Close-up de Fkaique com cabelo afro volumoso, fones de ouvido brancos no pescoço e camiseta azul, olhando confiantemente para a câmera. Imagem de identidade visual para portfólio técnico."
+            bg-color="var(--color-background)" halign="center"></Card>
         <div class="apresentation">
             <pre class="FKLanguage">
 <strong class="color-secondary">Eu</strong> = {
@@ -150,7 +175,7 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
             <pre class="FKLanguage">
 <strong class="color-secondary">Habilidades</strong> = [
     "HTML", "CSS", "TypeScript",
-    "Vue", "ReactJs"
+    "Vue", "ReactJs",
     "GML", "GDScript", "C#"
 ]
         </pre>
@@ -165,6 +190,7 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
             </div>
 
         </div>
+        
         <div class="card-home">
             <Card class="card-project" v-for="project in projectsFiltered" :key="project.id"
                 box-shadow="0px 4px 10px var(--color-background)" bg-color="var(--color-background)"
@@ -211,7 +237,7 @@ const idade = Math.floor((dateNow.getTime() - dateNasc.getTime()) / (1000 * 60 *
     font-family: var(--font-mono);
 }
 
-pre >* {
+pre>* {
     display: inline;
 }
 
@@ -300,7 +326,7 @@ pre >* {
 
 .card-home {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(60%, 280px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(60%, 300px), 1fr));
     gap: 20px;
     width: 100%;
 }

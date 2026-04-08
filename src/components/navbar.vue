@@ -33,7 +33,6 @@ onUnmounted(() => {
         <nav class="navbar">
             <div class="linkMain">
                 <!-- <router-link class="link" to="/galeria">Galeria</router-link> -->
-                 <a class="link" href="https://myscradle.github.io/galeria/">Galeria</a>
                 <router-link class="link" to="/domitorio">Dormitório</router-link>
             </div>
 
@@ -51,7 +50,6 @@ onUnmounted(() => {
             <div class="mudar-tema-sus" @click="mudarTema">Mudar Tema</div>
             <router-link class="link-sus" to="/domitorio">Dormitório</router-link>
                  <a class="link-sus" href="https://myscradle.github.io/galeria/">Galeria</a>
-            <!-- <router-link class="link-sus" to="/galeria">Galeria</router-link> -->
         </div>
     </div>
 </template>

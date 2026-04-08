@@ -67,6 +67,12 @@ const props = withDefaults(defineProps<{
     align-items: center;
 }
 
+.iconImg {
+    background-color: var(--color-branco);
+    padding: 2px;
+    border-radius: 5px;
+}
+
 .headCard img {
     width: 30px;
     height: 30px;
