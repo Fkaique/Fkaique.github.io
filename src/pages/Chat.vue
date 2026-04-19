@@ -17,7 +17,6 @@ const messages = ref<IMessage[]>([])
 const isConnected = ref(false)
 
 onMounted(async () => {
-    console.log("Minha URL da API é:", API_URL);
     try {
         const response = await fetch(`${API_URL}/messages`);
 
