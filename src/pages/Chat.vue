@@ -195,9 +195,6 @@ input {
     margin: 0;
 }
 
-.status {
-    position: absolute;
-}
 
 .online {
     color: #28a745;
@@ -205,6 +202,13 @@ input {
 
 .offline {
     color: #dc3545;
+}
+
+@media (min-width: 480px) {
+    .status {
+        position: absolute;
+    }
+
 }
 
 @media (max-width: 480px) {
