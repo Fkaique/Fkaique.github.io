@@ -127,7 +127,7 @@ input {
 }
 
 .chat {
-    min-height: 650px;
+    min-height: 60vh;
     height: 100%;
     border: 1px solid #ccc;
     margin: 10px;
@@ -174,7 +174,6 @@ input {
     background-color: #007bff;
     color: white;
     border-bottom-right-radius: 2px;
-    /* Estilo de "rabinho" da bolha */
 }
 
 .others-message .msg-item {
@@ -211,17 +210,26 @@ input {
     .status {
         position: absolute;
     }
-
 }
 
 @media (max-width: 480px) {
     .body {
+        padding: 5px;
+    }
+
+    .chat {
         padding: 10px;
+    }
+
+    .msg-item {
+        max-width: 90%;
     }
 
     .digiting input {
         padding: 10px;
         font-size: 0.9rem;
     }
+
+
 }
 </style>
