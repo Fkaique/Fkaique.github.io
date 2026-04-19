@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import DefaultLayout from "../defaultLayout.vue"
 import Home from "../pages/Home.vue"
 import Dormitorio from "../pages/Dormitorio.vue"
-import Galeria from "../pages/Galeria.vue"
+import Chat from "../pages/Chat.vue"
 
 const routes = [
     {
@@ -11,7 +11,7 @@ const routes = [
         children: [
             {path: '', component: Home},
             {path: '/domitorio', component: Dormitorio},
-            {path: '/galeria', component: Galeria}
+            {path: '/chat', component: Chat}
         ]
     }
 ]

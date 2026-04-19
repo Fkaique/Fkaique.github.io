@@ -32,14 +32,14 @@ onUnmounted(() => {
     <div class="header-wrapper">
         <nav class="navbar">
             <div class="linkMain">
-                <!-- <router-link class="link" to="/galeria">Galeria</router-link> -->
+                <router-link class="link" to="/">Home</router-link>
                 <router-link class="link" to="/domitorio">Dormitório</router-link>
+                <router-link class="link" to="/chat">Chat</router-link>
             </div>
-
+            
             <div class="col-2">
-                <router-link class="navHome" to="/">Home</router-link>
             </div>
-
+            
             <div class="col-3">
                 <div class="mudar-tema" @click="mudarTema"></div>
                 <div class="mudar-tema-hamburguer" @click.stop="openBurguer"></div>
@@ -49,7 +49,7 @@ onUnmounted(() => {
         <div v-if="isVisible" class="menu-burguer" @click.stop>
             <div class="mudar-tema-sus" @click="mudarTema">Mudar Tema</div>
             <router-link class="link-sus" to="/domitorio">Dormitório</router-link>
-                 <a class="link-sus" href="https://myscradle.github.io/galeria/">Galeria</a>
+            <router-link class="link-sus" to="/chat">Chat</router-link>
         </div>
     </div>
 </template>
