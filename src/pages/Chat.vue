@@ -112,6 +112,7 @@ input {
     outline: none;
     border-bottom: 1px solid var(--color-text);
     background: none;
+    color: var(--color-text);
 }
 
 .digiting button {
