@@ -195,6 +195,9 @@ input {
     margin: 0;
 }
 
+.status {
+    margin: auto;
+}
 
 .online {
     color: #28a745;
