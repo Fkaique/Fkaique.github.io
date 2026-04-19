@@ -190,7 +190,7 @@ const idade = computed(() => {
             </div>
 
         </div>
-        
+
         <div class="card-home">
             <Card class="card-project" v-for="project in projectsFiltered" :key="project.id"
                 box-shadow="0px 4px 10px var(--color-background)" bg-color="var(--color-background)"

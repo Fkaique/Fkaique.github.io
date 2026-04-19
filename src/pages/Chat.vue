@@ -17,6 +17,7 @@ const messages = ref<IMessage[]>([])
 const isConnected = ref(false)
 
 onMounted(async () => {
+    console.log("Minha URL da API é:", API_URL);
     try {
         const response = await fetch(`${API_URL}/messages`);
 
@@ -140,16 +141,13 @@ input {
     border-radius: 8px;
 }
 
-/* Container que ocupa a largura total */
 .msg-wrapper {
     display: flex;
     width: 100%;
 }
 
-/* Alinhamento */
 .my-message {
     justify-content: flex-end;
-    /* Empurra para a direita */
 }
 
 .others-message {
