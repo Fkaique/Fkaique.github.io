@@ -1,0 +1,373 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-sans, sans-serif); }
+  body { background: transparent; }
+
+  .screen { display: none; }
+  .screen.active { display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 2rem; }
+
+  /* HOME */
+  .home-header { text-align: center; margin-bottom: 2rem; }
+  .home-logo { font-size: 2.2rem; font-weight: 500; color: #185FA5; letter-spacing: -1px; margin-bottom: 0.25rem; }
+  .home-sub { font-size: 0.95rem; color: var(--color-text-secondary); }
+  .home-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem; max-width: 480px; width: 100%; margin-bottom: 1rem; }
+  .home-card p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+  .home-card ul { padding-left: 1.2rem; font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.8; }
+  .btn-primary { background: #185FA5; color: #fff; border: none; border-radius: var(--border-radius-md); padding: 0.75rem 2rem; font-size: 1rem; font-weight: 500; cursor: pointer; width: 100%; max-width: 480px; margin-bottom: 0.6rem; transition: background 0.15s; }
+  .btn-primary:hover { background: #0C447C; }
+  .btn-secondary { background: transparent; color: #185FA5; border: 0.5px solid #378ADD; border-radius: var(--border-radius-md); padding: 0.65rem 2rem; font-size: 0.9rem; cursor: pointer; width: 100%; max-width: 480px; transition: background 0.15s; }
+  .btn-secondary:hover { background: #E6F1FB; }
+
+  /* TUTORIAL */
+  .tutorial-wrap { max-width: 480px; width: 100%; }
+  .tut-step { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 0.75rem; display: flex; gap: 12px; align-items: flex-start; }
+  .tut-num { background: #E6F1FB; color: #185FA5; font-weight: 500; font-size: 0.85rem; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .tut-text h4 { font-size: 0.9rem; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .tut-text p { font-size: 0.83rem; color: var(--color-text-secondary); line-height: 1.5; }
+  .tut-btn-row { display: flex; gap: 8px; margin-top: 0.5rem; flex-wrap: wrap; }
+  .btn-branco { background: #fff; color: #185FA5; border: 1px solid #378ADD; border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; cursor: default; }
+  .btn-corrige { background: #fff; color: #3B6D11; border: 1px solid #639922; border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; cursor: default; }
+  .btn-confirma { background: #fff; color: #A32D2D; border: 1px solid #E24B4A; border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; cursor: default; }
+  .tut-header { text-align: center; margin-bottom: 1.25rem; }
+  .tut-header h2 { font-size: 1.2rem; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .tut-header p { font-size: 0.85rem; color: var(--color-text-secondary); }
+
+  /* URNA */
+  .urna-wrap { max-width: 440px; width: 100%; }
+  .cargo-label { text-align: center; background: #185FA5; color: #fff; border-radius: var(--border-radius-md) var(--border-radius-md) 0 0; padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; }
+  .urna-body { background: #1a1a2e; border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg); padding: 1.25rem; }
+  .display { background: #0d1b2a; border-radius: 6px; padding: 1rem; margin-bottom: 1rem; min-height: 130px; }
+  .display-title { color: #aab4be; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .display-num { color: #4fc3f7; font-size: 2rem; font-weight: 500; letter-spacing: 8px; min-height: 2.5rem; font-family: monospace; }
+  .display-sep { border-top: 1px solid #1e3a4f; margin: 8px 0; }
+  .display-candidato { color: #e0e0e0; font-size: 0.85rem; min-height: 2.8rem; }
+  .display-candidato .cand-nome { font-weight: 500; font-size: 0.95rem; color: #fff; }
+  .display-candidato .cand-partido { color: #aab4be; font-size: 0.78rem; }
+  .display-candidato .cand-status { font-size: 0.85rem; }
+  .display-candidato .nulo { color: #ef9f27; font-weight: 500; }
+  .display-candidato .branco { color: #97C459; font-weight: 500; }
+  .teclado { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1rem; }
+  .tecla { background: #2d3748; color: #e2e8f0; border: none; border-radius: 6px; padding: 0.75rem; font-size: 1.1rem; font-weight: 500; cursor: pointer; transition: background 0.1s; }
+  .tecla:hover { background: #3d4a5e; }
+  .tecla:active { background: #4a5568; }
+  .tecla-zero { grid-column: 2; }
+  .botoes-acao { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .btn-acao { border: none; border-radius: 6px; padding: 0.6rem 0.5rem; font-size: 0.75rem; font-weight: 500; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: opacity 0.15s; }
+  .btn-acao:active { opacity: 0.7; }
+  .btn-b { background: #185FA5; color: #fff; }
+  .btn-c { background: #3B6D11; color: #fff; }
+  .btn-cf { background: #A32D2D; color: #fff; }
+  .urna-progress { text-align: center; margin-bottom: 0.75rem; }
+  .progress-bar { height: 4px; background: #2d3748; border-radius: 2px; margin: 6px 0; }
+  .progress-fill { height: 4px; background: #4fc3f7; border-radius: 2px; transition: width 0.3s; }
+  .progress-text { font-size: 0.75rem; color: #aab4be; }
+
+  /* FIM */
+  .fim-wrap { max-width: 480px; width: 100%; text-align: center; }
+  .fim-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .fim-title { font-size: 1.4rem; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.5rem; }
+  .fim-sub { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
+  .fim-votos { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; margin-bottom: 1.25rem; text-align: left; }
+  .fim-votos h4 { font-size: 0.82rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .voto-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 0.85rem; }
+  .voto-row:last-child { border-bottom: none; }
+  .voto-cargo { color: var(--color-text-secondary); }
+  .voto-cand { color: var(--color-text-primary); font-weight: 500; }
+  .voto-branco { color: #3B6D11; }
+  .voto-nulo { color: #BA7517; }
+  .fim-aviso { background: #EAF3DE; border-radius: var(--border-radius-md); padding: 0.75rem 1rem; font-size: 0.82rem; color: #27500A; margin-bottom: 1.25rem; }
+</style>
+
+<h2 class="sr-only">VoteJá – Simulador de Urna Eletrônica Brasileira</h2>
+
+<div id="screen-home" class="screen active">
+  <div class="home-header">
+    <div class="home-logo">VoteJá</div>
+    <div class="home-sub">Simulador educativo da urna eletrônica</div>
+  </div>
+  <div class="home-card">
+    <p>Pratique como votar antes do dia da eleição. O VoteJá simula a urna eletrônica real com candidatos fictícios, sem vínculo com eleições oficiais.</p>
+    <ul>
+      <li>Simulação de todos os cargos eleitorais</li>
+      <li>Candidatos fictícios — neutralidade política</li>
+      <li>Funciona como ferramenta educativa</li>
+      <li>Nenhum dado é armazenado</li>
+    </ul>
+  </div>
+  <button class="btn-primary" onclick="iniciarSimulacao()">Iniciar Simulação</button>
+  <button class="btn-secondary" onclick="mostrarTutorial()">Ver Tutorial</button>
+</div>
+
+<div id="screen-tutorial" class="screen">
+  <div class="tutorial-wrap">
+    <div class="tut-header">
+      <h2>Como usar a urna</h2>
+      <p>Siga este guia antes de votar</p>
+    </div>
+    <div class="tut-step">
+      <div class="tut-num">1</div>
+      <div class="tut-text">
+        <h4>Digite o número do candidato</h4>
+        <p>Use o teclado numérico para digitar o número. O sistema exibe os dígitos conforme você pressiona.</p>
+      </div>
+    </div>
+    <div class="tut-step">
+      <div class="tut-num">2</div>
+      <div class="tut-text">
+        <h4>Confira o candidato na tela</h4>
+        <p>Após digitar o número completo, o nome, partido e foto do candidato aparecem na tela. Verifique se é o candidato certo.</p>
+      </div>
+    </div>
+    <div class="tut-step">
+      <div class="tut-num">3</div>
+      <div class="tut-text">
+        <h4>Use os botões de ação</h4>
+        <div class="tut-btn-row">
+          <span class="btn-branco">BRANCO</span>
+          <span class="btn-corrige">CORRIGE</span>
+          <span class="btn-confirma">CONFIRMA</span>
+        </div>
+        <p style="margin-top:8px"><strong>BRANCO</strong> — voto em branco &nbsp;|&nbsp; <strong>CORRIGE</strong> — apaga e recomeça &nbsp;|&nbsp; <strong>CONFIRMA</strong> — registra o voto</p>
+      </div>
+    </div>
+    <div class="tut-step">
+      <div class="tut-num">4</div>
+      <div class="tut-text">
+        <h4>Ordem dos cargos</h4>
+        <p>Deputado Federal → Deputado Estadual → Senador (1ª vaga) → Senador (2ª vaga) → Governador → Presidente</p>
+      </div>
+    </div>
+    <div class="tut-step">
+      <div class="tut-num">5</div>
+      <div class="tut-text">
+        <h4>Voto nulo</h4>
+        <p>Se digitar um número inexistente e confirmar, o voto será computado como nulo.</p>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="iniciarSimulacao()" style="margin-top:1rem">Pronto! Iniciar Simulação</button>
+    <button class="btn-secondary" onclick="mostrarHome()" style="margin-top:0.5rem">Voltar</button>
+  </div>
+</div>
+
+<div id="screen-urna" class="screen">
+  <div class="urna-wrap">
+    <div class="urna-progress">
+      <div class="progress-text" id="progress-text">Cargo 1 de 6</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="cargo-label" id="cargo-label">DEPUTADO FEDERAL</div>
+    <div class="urna-body">
+      <div class="display">
+        <div class="display-title">Número</div>
+        <div class="display-num" id="display-num">_ _</div>
+        <div class="display-sep"></div>
+        <div class="display-candidato" id="display-candidato">
+          <span style="color:#4a5568; font-size:0.82rem">Digite o número do candidato</span>
+        </div>
+      </div>
+      <div class="teclado" id="teclado">
+        <button class="tecla" onclick="digitarNum('1')">1</button>
+        <button class="tecla" onclick="digitarNum('2')">2</button>
+        <button class="tecla" onclick="digitarNum('3')">3</button>
+        <button class="tecla" onclick="digitarNum('4')">4</button>
+        <button class="tecla" onclick="digitarNum('5')">5</button>
+        <button class="tecla" onclick="digitarNum('6')">6</button>
+        <button class="tecla" onclick="digitarNum('7')">7</button>
+        <button class="tecla" onclick="digitarNum('8')">8</button>
+        <button class="tecla" onclick="digitarNum('9')">9</button>
+        <button class="tecla tecla-zero" onclick="digitarNum('0')">0</button>
+      </div>
+      <div class="botoes-acao">
+        <button class="btn-acao btn-b" onclick="votarBranco()">Branco</button>
+        <button class="btn-acao btn-c" onclick="corrigirVoto()">Corrige</button>
+        <button class="btn-acao btn-cf" onclick="confirmarVoto()">Confirma</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="screen-fim" class="screen">
+  <div class="fim-wrap">
+    <div class="fim-icon">🗳️</div>
+    <div class="fim-title">Fim da votação</div>
+    <div class="fim-sub">Você concluiu a simulação! Seus votos foram registrados apenas para fins educativos e serão descartados.</div>
+    <div class="fim-votos">
+      <h4>Resumo da simulação</h4>
+      <div id="resumo-votos"></div>
+    </div>
+    <div class="fim-aviso">Esta simulação não tem valor oficial e não interfere em nenhum processo eleitoral real.</div>
+    <button class="btn-primary" onclick="reiniciar()">Simular novamente</button>
+    <button class="btn-secondary" onclick="mostrarHome()">Voltar ao início</button>
+  </div>
+</div>
+
+<script>
+const cargos = [
+  { nome: "DEPUTADO FEDERAL", digitos: 4 },
+  { nome: "DEPUTADO ESTADUAL", digitos: 5 },
+  { nome: "SENADOR — 1ª Vaga", digitos: 3 },
+  { nome: "SENADOR — 2ª Vaga", digitos: 3 },
+  { nome: "GOVERNADOR", digitos: 2 },
+  { nome: "PRESIDENTE", digitos: 2 }
+];
+
+const candidatos = {
+  "1234": { nome: "Ana Costa", partido: "PRB", cargo: 0 },
+  "5678": { nome: "Carlos Lima", partido: "PDT", cargo: 0 },
+  "9012": { nome: "Maria Souza", partido: "PSB", cargo: 0 },
+  "11111": { nome: "João Ferreira", partido: "PT", cargo: 1 },
+  "22222": { nome: "Lúcia Andrade", partido: "PSDB", cargo: 1 },
+  "33333": { nome: "Pedro Nunes", partido: "MDB", cargo: 1 },
+  "101": { nome: "Rita Campos", partido: "PL", cargo: 2 },
+  "202": { nome: "Bruno Alves", partido: "PP", cargo: 2 },
+  "303": { nome: "Rita Campos", partido: "PL", cargo: 3 },
+  "404": { nome: "Bruno Alves", partido: "PP", cargo: 3 },
+  "13": { nome: "Fernanda Dias", partido: "PSD", cargo: 4 },
+  "27": { nome: "Marcos Rocha", partido: "DEM", cargo: 4 },
+  "45": { nome: "Carla Vieira", partido: "PODE", cargo: 5 },
+  "55": { nome: "Renato Gomes", partido: "NOVO", cargo: 5 }
+};
+
+let cargoAtual = 0;
+let bufferDigitos = "";
+let votosRegistrados = [];
+let confirmado = false;
+
+function mostrarScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+}
+
+function mostrarHome() { mostrarScreen('home'); }
+function mostrarTutorial() { mostrarScreen('tutorial'); }
+
+function iniciarSimulacao() {
+  cargoAtual = 0;
+  bufferDigitos = "";
+  votosRegistrados = [];
+  confirmado = false;
+  carregarCargo();
+  mostrarScreen('urna');
+}
+
+function carregarCargo() {
+  bufferDigitos = "";
+  confirmado = false;
+  const c = cargos[cargoAtual];
+  document.getElementById('cargo-label').textContent = c.nome;
+  document.getElementById('progress-text').textContent = `Cargo ${cargoAtual + 1} de ${cargos.length}`;
+  document.getElementById('progress-fill').style.width = ((cargoAtual / cargos.length) * 100) + '%';
+  atualizarDisplay();
+}
+
+function atualizarDisplay() {
+  const c = cargos[cargoAtual];
+  const nd = document.getElementById('display-num');
+  const cd = document.getElementById('display-candidato');
+  const digitos = bufferDigitos.length;
+
+  let placeholders = "";
+  for (let i = 0; i < c.digitos; i++) {
+    placeholders += (i < digitos ? bufferDigitos[i] : "_") + (i < c.digitos - 1 ? " " : "");
+  }
+  nd.textContent = placeholders;
+
+  if (digitos === 0) {
+    cd.innerHTML = '<span style="color:#4a5568; font-size:0.82rem">Digite o número do candidato</span>';
+  } else if (digitos < c.digitos) {
+    cd.innerHTML = '<span style="color:#4a5568; font-size:0.82rem">Continue digitando...</span>';
+  } else {
+    const cand = buscarCandidato(bufferDigitos, cargoAtual);
+    if (cand) {
+      cd.innerHTML = `<div class="cand-nome">${cand.nome}</div><div class="cand-partido">${cand.partido}</div>`;
+    } else {
+      cd.innerHTML = '<div class="cand-status nulo">VOTO NULO</div>';
+    }
+  }
+}
+
+function buscarCandidato(num, cargo) {
+  const c = candidatos[num];
+  if (c && c.cargo === cargo) return c;
+  return null;
+}
+
+function digitarNum(n) {
+  if (confirmado) return;
+  const c = cargos[cargoAtual];
+  if (bufferDigitos.length < c.digitos) {
+    bufferDigitos += n;
+    atualizarDisplay();
+  }
+}
+
+function corrigirVoto() {
+  if (confirmado) return;
+  bufferDigitos = "";
+  atualizarDisplay();
+}
+
+function votarBranco() {
+  if (confirmado) return;
+  bufferDigitos = "";
+  const cd = document.getElementById('display-candidato');
+  const nd = document.getElementById('display-num');
+  cd.innerHTML = '<div class="cand-status branco">VOTO EM BRANCO</div>';
+  nd.textContent = "—";
+  bufferDigitos = "BRANCO";
+}
+
+function confirmarVoto() {
+  if (confirmado) return;
+  if (bufferDigitos === "") {
+    const cd = document.getElementById('display-candidato');
+    cd.innerHTML = '<span style="color:#ef9f27; font-size:0.82rem">Digite um número ou pressione Branco</span>';
+    return;
+  }
+  confirmado = true;
+
+  let tipo, nomeExibido;
+  if (bufferDigitos === "BRANCO") {
+    tipo = "branco";
+    nomeExibido = "Branco";
+  } else {
+    const cand = buscarCandidato(bufferDigitos, cargoAtual);
+    if (cand) {
+      tipo = "normal";
+      nomeExibido = cand.nome + " (" + cand.partido + ")";
+    } else {
+      tipo = "nulo";
+      nomeExibido = "Nulo";
+    }
+  }
+
+  votosRegistrados.push({ cargo: cargos[cargoAtual].nome, tipo, nomeExibido });
+
+  const cd = document.getElementById('display-candidato');
+  cd.innerHTML += '<div style="color:#4fc3f7; font-size:0.78rem; margin-top:4px">✓ Voto confirmado</div>';
+
+  setTimeout(() => {
+    cargoAtual++;
+    if (cargoAtual >= cargos.length) {
+      mostrarFim();
+    } else {
+      carregarCargo();
+    }
+  }, 900);
+}
+
+function mostrarFim() {
+  document.getElementById('progress-fill').style.width = '100%';
+  const resumo = document.getElementById('resumo-votos');
+  resumo.innerHTML = votosRegistrados.map(v => {
+    let cls = v.tipo === 'branco' ? 'voto-branco' : v.tipo === 'nulo' ? 'voto-nulo' : '';
+    return `<div class="voto-row">
+      <span class="voto-cargo">${v.cargo}</span>
+      <span class="voto-cand ${cls}">${v.nomeExibido}</span>
+    </div>`;
+  }).join('');
+  mostrarScreen('fim');
+}
+
+function reiniciar() { iniciarSimulacao(); }
+</script>
