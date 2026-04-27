@@ -33,7 +33,7 @@ onUnmounted(() => {
         <nav class="navbar">
             <div class="linkMain">
                 <router-link class="link" to="/">Home</router-link>
-                <router-link class="link" to="/domitorio">Dormitório</router-link>
+                <router-link class="link" to="/dormitorio">Dormitório</router-link>
                 <router-link class="link" to="/chat">Chat</router-link>
             </div>
             
@@ -48,7 +48,7 @@ onUnmounted(() => {
 
         <div v-if="isVisible" class="menu-burguer" @click.stop>
             <div class="mudar-tema-sus" @click="mudarTema">Mudar Tema</div>
-            <router-link class="link-sus" to="/domitorio">Dormitório</router-link>
+            <router-link class="link-sus" to="/dormitorio">Dormitório</router-link>
             <router-link class="link-sus" to="/chat">Chat</router-link>
         </div>
     </div>
