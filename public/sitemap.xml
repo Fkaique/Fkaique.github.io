@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fkaique.github.io/</loc>
+    <loc>https://fkaique.tech/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://fkaique.github.io/dormitorio</loc>
+    <loc>https://fkaique.tech/dormitorio</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+   <url>
+    <loc>https://fkaique.tech/chat</loc>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
