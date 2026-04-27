@@ -27,4 +27,9 @@ router.beforeEach((to, from, next) => {
     next();
 });
 
+router.afterEach((to) => {
+  const title = to.meta.title as string || 'Fkaique | Software Engineer';
+  document.title = title;
+});
+
 export default router
