@@ -9,9 +9,9 @@ const routes = [
         path: '/',
         component: DefaultLayout,
         children: [
-            {path: '', component: Home, meta: {title: "Fkaique | Software Engineer & Game Dev Indie"}},
-            {path: '/dormitorio', component: Dormitorio, meta: {title: "Dormitório | Fkaique"}},
-            {path: '/chat', component: Chat, meta: {title: "Chat | Fkaique"}}
+            {path: '', component: Home},
+            {path: '/domitorio', component: Dormitorio},
+            {path: '/chat', component: Chat}
         ]
     }
 ]
@@ -20,16 +20,5 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-
-router.beforeEach((to, from, next) => {
-    const title = to.meta?.title as string || "Fkaique";
-    document.title = title;
-    next();
-});
-
-router.afterEach((to) => {
-  const title = to.meta.title as string || 'Fkaique | Software Engineer';
-  document.title = title;
-});
 
 export default router
