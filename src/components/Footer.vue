@@ -27,6 +27,8 @@ import git from '../assets/github.png'
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+    background-color: color-mix(in srgb, var(--color-background) 80%, transparent);
+    z-index: 1;
 }
 
 .right {
@@ -54,5 +56,12 @@ footer {
 
 .icon {
     width: 30px;
+}
+
+@media (orientation: portrait) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+    }
 }
 </style>

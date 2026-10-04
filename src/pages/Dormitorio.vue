@@ -124,7 +124,7 @@ onUnmounted(() => {
     padding: 10px;
     width: 10vw;
     height: 10vh;
-    min-width: 100px;
+    min-width: 130px;
     font-size: clamp(4%, 2vh, 20px);
     border: 1px solid;
     border-radius: 5px;

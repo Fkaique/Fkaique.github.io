@@ -1,30 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import Navbar from './components/navbar.vue';
-import Footer from './components/Footer.vue';
+import { onMounted, ref } from 'vue'
+import Navbar from './components/navbar.vue'
+import Footer from './components/Footer.vue'
 
 const tema = ref('tema--escuro')
 
-const savedTheme = localStorage.getItem('theme')
-if (savedTheme) {
-    tema.value = savedTheme
-}
+onMounted(() => {
+    const savedTheme = localStorage.getItem('theme')
+
+    if (savedTheme) {
+        tema.value = savedTheme
+    }
+})
 
 function toggleTheme() {
     tema.value = tema.value === 'tema--claro'
-    ? 'tema--escuro'
-    : 'tema--claro'
+        ? 'tema--escuro'
+        : 'tema--claro'
+
     localStorage.setItem('theme', tema.value)
 }
-
 </script>
 
 <template>
     <div class="defaultLayout tema" :class="tema">
         <Navbar @toggle-theme="toggleTheme" />
+
         <main class="content">
             <router-view />
         </main>
+
         <Footer />
     </div>
 </template>
