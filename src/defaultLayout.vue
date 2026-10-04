@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Navbar from './components/navbar.vue';
+import Footer from './components/Footer.vue';
 
 const tema = ref('tema--escuro')
 
@@ -24,7 +25,7 @@ function toggleTheme() {
         <main class="content">
             <router-view />
         </main>
-        <footer>@ Fkaique, 2026</footer>
+        <Footer />
     </div>
 </template>
 
@@ -41,10 +42,5 @@ function toggleTheme() {
     display: flex;
     flex-direction: column;
     flex: 1;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
 }
 </style>
